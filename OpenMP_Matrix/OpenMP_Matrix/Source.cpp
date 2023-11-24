@@ -36,13 +36,15 @@ int main()
 		{
 			cin >> thread_input;
 			value = stoi(thread_input);
-	
+
 			if (value < 0 || value > max_value)
 				error_to_console("Введено число меньшее 1 или большее лимита. Введите значение повторно",
 					"Количество потоков = ");
 			else
+			{
 				omp_set_num_threads(value);
 				flag_thread = false;
+			}
 
 		}
 		catch (invalid_argument)
@@ -51,7 +53,9 @@ int main()
 							 "Количество потоков = ");
 		}
 	}
+	
 	cout << "Введите размер матрицы = ";
+	
 	while (flag_matrix == true)
 	{
 		try
@@ -71,6 +75,7 @@ int main()
 							 "Введите размер матрицы = ");
 		}
 	}
+
 	// инициализация матриц
 	int** a = new int* [matrix];
 	for (i = 0; i < matrix; i++)
